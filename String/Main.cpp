@@ -1,11 +1,11 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <conio.h>
 #include "String.h"
 #include "Interface.h"
 
 using namespace std;
 
-//Демонстрация работы конструкторов, работа 1
+//Р”РµРјРѕРЅСЃС‚СЂР°С†РёСЏ СЂР°Р±РѕС‚С‹ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂРѕРІ, СЂР°Р±РѕС‚Р° 1
 void testconstructor()
 {
 	cin.ignore();
