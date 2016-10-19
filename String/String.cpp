@@ -108,6 +108,13 @@ String String::operator+(String concat)
 
 String String::operator-(char* substring)
 {
+	char *p = 0, *p1 = 0;
+	size_t size = strlen(substring);
+	for (; p = strstr(arr+LEN, substring); )
+	{
+		p1 = p + size;
+		while (*p++ = *p1++);
+	}
 	return *this;
 }
 

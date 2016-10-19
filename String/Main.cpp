@@ -64,7 +64,18 @@ void testplusstring()
 
 void testminus()
 {
+	char* input;
 
+	cin.ignore();
+	cout << "Enter string 1: ";
+	input = new char[60];
+	cin.getline(input, 60);
+	String str = String(60, input);
+	cout << "Enter string 2: ";
+	cin.getline(input, 60);
+	cout << "Result: ";
+	str - input;
+	str.Print();
 }
 
 void testbrackets()
