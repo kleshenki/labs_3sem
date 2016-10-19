@@ -1,19 +1,19 @@
-#pragma once
+п»ї#pragma once
 #include <list>
 #include <ctime>
 
-#define LEN 3 // выделяем три символа в начале строки для хранения реальной длины строки
+#define LEN 3 // РІС‹РґРµР»СЏРµРј С‚СЂРё СЃРёРјРІРѕР»Р° РІ РЅР°С‡Р°Р»Рµ СЃС‚СЂРѕРєРё РґР»СЏ С…СЂР°РЅРµРЅРёСЏ СЂРµР°Р»СЊРЅРѕР№ РґР»РёРЅС‹ СЃС‚СЂРѕРєРё
 
 class String
 {
 private:
 	char* arr;
 	int maxlen;
-	time_t create; // время создания строки
+	time_t create; // РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ СЃС‚СЂРѕРєРё
 
 public:
-	static std::list<String*> allstr; //Лист со всеми объектами класса в памяти
-	static void PrintAll(); //Вывод в консоль всех объектов
+	static std::list<String*> allstr; //Р›РёСЃС‚ СЃРѕ РІСЃРµРјРё РѕР±СЉРµРєС‚Р°РјРё РєР»Р°СЃСЃР° РІ РїР°РјСЏС‚Рё
+	static void PrintAll(); //Р’С‹РІРѕРґ РІ РєРѕРЅСЃРѕР»СЊ РІСЃРµС… РѕР±СЉРµРєС‚РѕРІ
 
 	String();
 	String(int maxlength, char* strarr);
@@ -22,6 +22,6 @@ public:
 
 	int RealLength();
 	int MaxLength();
-	char* Substring(char*); // нахождение подстроки
+	char* Substring(char*); // РЅР°С…РѕР¶РґРµРЅРёРµ РїРѕРґСЃС‚СЂРѕРєРё
 	void Print();
 };

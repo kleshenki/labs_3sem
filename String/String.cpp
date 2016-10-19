@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include "String.h"
 
 std::list<String*> String::allstr = std::list<String*>();
