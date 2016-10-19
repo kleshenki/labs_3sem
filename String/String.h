@@ -2,25 +2,26 @@
 #include <list>
 #include <ctime>
 
-#define LEN 3
+#define LEN 3 // выделяем три символа в начале строки для хранения реальной длины строки
 
 class String
 {
 private:
 	char* arr;
 	int maxlen;
-	time_t create;
+	time_t create; // время создания строки
 
 public:
-	static std::list<String*> allstr;
-	static void PrintAll();
+	static std::list<String*> allstr; //Лист со всеми объектами класса в памяти
+	static void PrintAll(); //Вывод в консоль всех объектов
 
 	String();
 	String(int maxlength, char* strarr);
 	String(const String& copy);
 	~String();
 
-	int Length();
-	char* Substring(char*);
+	int RealLength();
+	int MaxLength();
+	char* Substring(char*); // нахождение подстроки
 	void Print();
 };
