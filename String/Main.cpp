@@ -4,7 +4,7 @@
 #include "Interface.h"
 
 using namespace std;
-
+//	ХУЙ
 //Демонстрация работы конструкторов, работа 1
 void testconstructor()
 {
