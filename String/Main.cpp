@@ -80,12 +80,28 @@ void testminus()
 
 void testbrackets()
 {
-
+	char *temp = new char[256];
+	cout << "Enter string: ";
+	cin.ignore();
+	cin.getline(temp, 256);
+	String str(256, temp);
+	cout << "Substring (2, 2) = ";
+	String result = str(2, 2);
+	result.Print();
 }
 
 void testassignment()
 {
-
+	char*s = new char[256];
+	cout << "Enter first string: ";
+	cin.ignore();
+	cin.getline(s, 256);
+	String str(256, s);
+	cout << "Enter second string: ";
+	cin.getline(s, 256);
+	str = String(256, s);
+	cout << "First now is: ";
+	str.Print();
 }
 
 int main()

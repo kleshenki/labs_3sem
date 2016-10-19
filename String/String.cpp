@@ -120,10 +120,19 @@ String String::operator-(char* substring)
 
 String String::operator()(int index, int len)
 {
-	return *this;
+	if (maxlen-LEN <= (index + len))
+		return String();
+	char*temp = new char[len + 1];
+	memcpy(temp, &arr[index + LEN], len);
+	temp[len] = '\0';
+	return String(len + LEN, temp);
 }
 
 String& String::operator=(String& assignment)
 {
+	if (this == &assignment)
+		return *this;
+	arr = _strdup(assignment.arr);
+	maxlen = assignment.maxlen;
 	return *this;
 }
