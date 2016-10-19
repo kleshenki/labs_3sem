@@ -8,11 +8,14 @@ using namespace std;
 //Демонстрация работы конструкторов, работа 1
 void testconstructor()
 {
+	char* input;
+	String *test, *defaultconst, *copy;
+
 	cin.ignore();
 	cout << "Enter string: ";
-	char* input = new char[60];
+	input = new char[60];
 	cin.getline(input, 60);
-	String* test = new String(60, input);
+	test = new String(60, input);
 	cout << "Real length: " << test->RealLength() << "\n";
 	cout << "Maximal length: " << test->MaxLength() << "\n";
 	cout << "Enter substring: ";
@@ -21,17 +24,70 @@ void testconstructor()
 	cout << "Full string: ";
 	test->Print();
 	
-	String* defaultconst = new String();
-	String* copy = new String(*test);
+	defaultconst = new String();
+	copy = new String(*test);
 	cout << "\n\n\nNow print all three strings: \n";
 	String::PrintAll();
+}
+
+//Функции демонстрации перегруженных операторов
+void testpluschar()
+{
+	char* input;
+
+	cin.ignore();
+	cout << "Enter string 1: ";
+	input = new char[60];
+	cin.getline(input, 60);
+	String str = String(60, input);
+	cout << "Enter string 2: ";
+	cin.getline(input, 60);
+	str + input;
+	str.Print();
+}
+
+void testplusstring()
+{
+	char* input;
+
+	cin.ignore();
+	cout << "Enter string 1: ";
+	input = new char[60];
+	cin.getline(input, 60);
+	String str1 = String(60, input);
+	cout << "Enter string 2: ";
+	cin.getline(input, 60);
+	String str2 = String(60, input);
+	str1 + str2;
+	str1.Print();
+}
+
+void testminus()
+{
+
+}
+
+void testbrackets()
+{
+
+}
+
+void testassignment()
+{
+
 }
 
 int main()
 {
 	Interface items[] =
 	{
-		{ 1, &testconstructor, "Test constructor" },
+		//id    функция             комментарий в консоли
+		{ 1,	&testconstructor,	"Test constructor"				},
+		{ 2,	&testpluschar,		"Test operator+ with char*"		},
+		{ 3,	&testplusstring,	"Test operator+ with String"	},
+		{ 4,	&testminus,			"Test operator- with char*"		},
+		{ 5,	&testbrackets,		"Test operator() with int,int"	},
+		{ 6,	&testassignment,	"Test operator= with String*"	},
 	};
 	while (true)
 	{
