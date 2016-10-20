@@ -1,11 +1,14 @@
 ﻿#include <iostream>
+#include <fstream>
 #include "String.h"
 
-std::list<String*> String::allstr = std::list<String*>();
+using namespace std;
+
+list<String*> String::allstr = list<String*>();
 
 void String::PrintAll()
 {
-	std::cout << "Total amount of objects: " << allstr.size() << "\nNow print all objects:\n";
+	cout << "Total amount of objects: " << allstr.size() << "\nNow print all objects:\n";
 	for (auto it = allstr.begin(); it != allstr.end(); it++)
 		it._Ptr->_Myval->Print();
 }
@@ -63,7 +66,7 @@ char* String::Substring(char* substring)
 
 void String::Print()
 {
-	std::cout << arr + LEN << "\n";
+	cout << arr + LEN << "\n";
 }
 
 void String::RecalcLength()
@@ -135,4 +138,29 @@ String& String::operator=(String& assignment)
 	arr = _strdup(assignment.arr);
 	maxlen = assignment.maxlen;
 	return *this;
+}
+
+//Методы перегрузки операций ввода/вывода
+ostream& operator<<(ostream& os, String& str)
+{
+	os << str.arr;
+	return os;
+}
+
+istream& operator>>(istream& is, String& str)
+{
+	is >> str.arr;
+	return is;
+}
+
+ofstream& operator<<(ofstream& ofs, String& str)
+{
+	ofs << str.arr;
+	return ofs;
+}
+
+ifstream& operator>>(ifstream& ifs, String& str)
+{
+	ifs.getline(str.arr, str.maxlen);
+	return ifs;
 }

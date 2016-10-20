@@ -1,8 +1,11 @@
 ﻿#pragma once
 #include <list>
 #include <ctime>
+#include <iostream>
 
 #define LEN 3 // выделяем три символа в начале строки для хранения реальной длины строки
+
+using namespace std;
 
 class String
 {
@@ -12,7 +15,7 @@ private:
 	time_t create; // время создания строки
 
 public:
-	static std::list<String*> allstr; //Лист со всеми объектами класса в памяти
+	static list<String*> allstr; //Лист со всеми объектами класса в памяти
 	static void PrintAll(); //Вывод в консоль всех объектов
 
 	String();
@@ -32,4 +35,10 @@ public:
 	String operator-(char*);
 	String operator()(int, int);
 	String& operator=(String&);
+
+	//Операторы ввода/вывода
+	friend ostream& operator<<(ostream&, String&);
+	friend istream& operator>>(istream&, String&);
+	friend ofstream& operator<<(ofstream&, String&);
+	friend ifstream& operator>>(ifstream&, String&);
 };
