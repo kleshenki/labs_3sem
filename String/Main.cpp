@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <conio.h>
+#include <Windows.h>
 #include "String.h"
 #include "Interface.h"
 
@@ -104,8 +105,42 @@ void testassignment()
 	str.Print();
 }
 
+void testconsolestream()
+{
+	cin.ignore();
+	String str(80, "");
+	cout << "Enter string: ";
+	cin >> str;
+	cout << "The string is: " << str;
+}
+
+void testtextfile()
+{
+	cin.ignore();
+	String str(80, "");
+	cout << "Enter string: ";
+	cin >> str;
+	str.PrintToFile(".\\test.txt", false);
+	String fromfile;
+	fromfile = String::GetFromFile(".\\test.txt", str.MaxLength(), false);
+	cout << "The file now contains: " << fromfile;
+}
+
+void testbinaryfile()
+{
+	cin.ignore();
+	String str(80, "");
+	cout << "Enter string: ";
+	cin >> str;
+	str.PrintToFile(".\\test.bin", true);
+	String fromfile;
+	fromfile = String::GetFromFile(".\\test.bin", str.MaxLength(), true);
+	cout << "The file now contains: " << fromfile;
+}
+
 int main()
 {
+	HANDLE hConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 	Interface items[] =
 	{
 		//id    функция             комментарий в консоли
@@ -115,14 +150,20 @@ int main()
 		{ 4,	&testminus,			"Test operator- with char*"		},
 		{ 5,	&testbrackets,		"Test operator() with int,int"	},
 		{ 6,	&testassignment,	"Test operator= with String*"	},
+		{ 7,	&testconsolestream,	"Test console I/O"				},
+		{ 8,	&testtextfile,		"Test text file I/O"			},
+		{ 9,	&testbinaryfile,	"Test binary file I/O"			},
 	};
 	while (true)
 	{
 		int choice;
+		SetConsoleTextAttribute(hConsoleHandle, 10 | 0);
 		for each (Interface i in items)
 			cout << i.id << ". " << i.comment << "\n";
+		SetConsoleTextAttribute(hConsoleHandle, 12 | 0);
 		cout << "Choose menu item: ";
 		cin >> choice;
+		SetConsoleTextAttribute(hConsoleHandle, 9 | 0);
 		if (choice < 1 || choice > sizeof(items) / sizeof(Interface))
 			return 0;
 		items[choice - 1].invoke();
