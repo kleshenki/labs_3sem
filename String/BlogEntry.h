@@ -13,4 +13,5 @@ public:
 
 	void SetCompletionState(bool state);
 	bool GetCompletionState();
+	void Print();
 };

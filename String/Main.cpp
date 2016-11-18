@@ -3,6 +3,7 @@
 #include <Windows.h>
 #include "String.h"
 #include "BinNumber.h"
+#include "BlogEntry.h"
 #include "Interface.h"
 
 using namespace std;
@@ -143,6 +144,16 @@ void testbinnumberclass()
 {
 	String* bn = new BinNumber(5, "0101");
 	bn->Print();
+	String* incorrectbn = new BinNumber(5, "0123");
+	incorrectbn->Print();
+}
+
+void testblogentry()
+{
+	BlogEntry* be = new BlogEntry(23, "Time to do something!");
+	be->Print();
+	be->SetCompletionState(true);
+	be->Print();
 }
 
 int main()
@@ -161,6 +172,7 @@ int main()
 		{ 8,	&testtextfile,			"Test text file I/O"			},
 		{ 9,	&testbinaryfile,		"Test binary file I/O"			},
 		{ 10,	&testbinnumberclass,	"Test BinNumber class"			},
+		{ 11,	&testblogentry,			"Test BlogEntry class"			},
 	};
 	while (true)
 	{

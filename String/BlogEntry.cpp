@@ -8,6 +8,7 @@ BlogEntry::BlogEntry(int maxlength, char* entry)
 	RecalcLength();
 	create = time(NULL);
 	time(&start);
+	complete = false;
 	allstr.insert(allstr.end(), this);
 }
 
@@ -20,4 +21,17 @@ void BlogEntry::SetCompletionState(bool state)
 bool BlogEntry::GetCompletionState()
 {
 	return complete;
+}
+
+void BlogEntry::Print()
+{
+	struct tm* strt = localtime(&start);
+	cout << "Started at " << strt->tm_hour << ":" << strt->tm_min << " \"" << arr + LEN << "\" and ";
+	if (complete)
+	{
+		struct tm* endt = localtime(&end);
+		cout << "completed at " << endt->tm_hour << ":" << endt->tm_min << ".\n";
+	}
+	else
+		cout << "is still incomplete.\n";
 }
