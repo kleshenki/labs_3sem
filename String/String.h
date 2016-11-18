@@ -9,7 +9,7 @@ using namespace std;
 
 class String
 {
-private:
+protected:
 	char* arr;
 	int maxlen;
 	time_t create; // время создания строки
@@ -26,19 +26,22 @@ public:
 	int RealLength();
 	int MaxLength();
 	char* Substring(char*); // нахождение подстроки
-	void Print();
+	virtual void Print();
 	void RecalcLength();
 
 	//Перегрузка операций
-	String operator+(char*);
-	String operator+(String);
-	String operator-(char*);
-	String operator()(int, int);
-	String& operator=(String&);
+	String operator+(char* concat);
+	String operator+(String concat);
+	String operator-(char* substring);
+	String operator()(int position, int length);
+	String& operator=(String& assignment);
 
 	//Операторы ввода/вывода
-	friend ostream& operator<<(ostream&, String&);
-	friend istream& operator>>(istream&, String&);
-	friend ofstream& operator<<(ofstream&, String&);
-	friend ifstream& operator>>(ifstream&, String&);
+	friend ostream& operator<<(ostream& os, String& output);
+	friend istream& operator>>(istream& is, String& input);
+	friend ofstream& operator<<(ofstream& ofs, String& output);
+	friend ifstream& operator>>(ifstream& ifs, String& input);
+
+	void PrintToFile(char* path, bool binary);
+	static String GetFromFile(char* path, int length, bool binary);
 };

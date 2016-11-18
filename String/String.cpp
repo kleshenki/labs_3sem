@@ -143,24 +143,64 @@ String& String::operator=(String& assignment)
 //Методы перегрузки операций ввода/вывода
 ostream& operator<<(ostream& os, String& str)
 {
-	os << str.arr;
+	os << str.arr + 3;
 	return os;
 }
 
 istream& operator>>(istream& is, String& str)
 {
-	is >> str.arr;
+	char* arr = new char[80];
+	is.getline(arr, 80);
+	strncpy(str.arr+3, arr, 80);
+	str.RecalcLength();
 	return is;
 }
 
 ofstream& operator<<(ofstream& ofs, String& str)
 {
-	ofs << str.arr;
+	ofs << str.arr + 3;
 	return ofs;
 }
 
 ifstream& operator>>(ifstream& ifs, String& str)
 {
-	ifs.getline(str.arr, str.maxlen);
+	char* arr = new char[80];
+	ifs.getline(arr, 80);
+	strncpy(str.arr+3, arr, 80);
+	str.RecalcLength();
 	return ifs;
+}
+
+void String::PrintToFile(char* path, bool binary)
+{
+	ofstream out;
+	if (binary)
+	{
+		out.open(path, ios_base::binary);
+		out.write((char*)this, sizeof(this));
+	}
+	else
+	{
+		out.open(path);
+		out << *this;
+	}
+	out.close();
+}
+
+String String::GetFromFile(char* path, int length, bool binary)
+{
+	ifstream in;
+	String ret(length, "");
+	if (binary)
+	{
+		in.open(path, ios_base::binary);
+		in.read((char*)&ret, sizeof(String));
+	}
+	else
+	{
+		in.open(path);
+		in >> ret;
+	}
+	in.close();
+	return ret;
 }
