@@ -108,6 +108,7 @@ void testassignment()
 	str.Print();
 }
 
+//функции демонстрации работы с потоками, а именно операторов, реализующих работу с ними
 void testconsolestream()
 {
 	cin.ignore();
@@ -141,6 +142,7 @@ void testbinaryfile()
 	cout << "The file now contains: " << fromfile;
 }
 
+//функции демонстрации наследуемых классов
 void testbinnumberclass()
 {
 	String* bn = new BinNumber(5, "0101");
@@ -157,6 +159,7 @@ void testblogentry()
 	be->Print();
 }
 
+//демонстрация кастомной реализации стэка, демонстрация полиморфизма наследуемых классов в реализации стэка
 void teststack()
 {
 	cin.ignore();
