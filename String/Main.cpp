@@ -5,6 +5,7 @@
 #include "BinNumber.h"
 #include "BlogEntry.h"
 #include "Interface.h"
+#include "Stack.h"
 
 using namespace std;
 
@@ -156,6 +157,37 @@ void testblogentry()
 	be->Print();
 }
 
+void teststack()
+{
+	cin.ignore();
+	char* input = new char[80];
+	int len = 0;
+	String* str;
+	BinNumber* bn;
+
+	Stack stack = Stack();
+	cout << "Stack work demonstration.\n";
+	cout << "Enter string: ";
+	cin.getline(input, 80);
+	str = new String(80, input);
+	cout << "Enter length of binstring: ";
+	cin >> len;
+	input = new char[len + 1];
+	cout << "Enter binstring: ";
+	cin.ignore();
+	cin.getline(input, len+1);
+	input[len+1] = '\n';
+	bn = new BinNumber(len, input);
+
+	stack.push(str);
+	stack.push(bn);
+	stack.show();
+
+	cout << "Take top item. Now show stack:\n";
+	stack.pop();
+	stack.show();
+}
+
 int main()
 {
 	HANDLE hConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -173,6 +205,7 @@ int main()
 		{ 9,	&testbinaryfile,		"Test binary file I/O"			},
 		{ 10,	&testbinnumberclass,	"Test BinNumber class"			},
 		{ 11,	&testblogentry,			"Test BlogEntry class"			},
+		{ 12,	&teststack,				"Test stack"					},
 	};
 	while (true)
 	{
