@@ -147,8 +147,15 @@ void testbinnumberclass()
 {
 	String* bn = new BinNumber(5, "0101");
 	bn->Print();
-	String* incorrectbn = new BinNumber(5, "0123");
-	incorrectbn->Print();
+	try
+	{
+		String* incorrectbn = new BinNumber(5, "0123");
+		incorrectbn->Print();
+	}
+	catch (char* ex)
+	{
+		cout << ex;
+	}
 }
 
 void testblogentry()
@@ -191,6 +198,20 @@ void teststack()
 	stack.show();
 }
 
+void testexceptionals()
+{
+	BinNumber* bn;
+	try
+	{
+		cout << "Trying to create a binary number object that contains 0123 number: \n";
+		bn = new BinNumber(5, "0123");
+	}
+	catch (char* exception)
+	{
+		cout << exception;
+	}
+}
+
 int main()
 {
 	HANDLE hConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -209,6 +230,7 @@ int main()
 		{ 10,	&testbinnumberclass,	"Test BinNumber class"			},
 		{ 11,	&testblogentry,			"Test BlogEntry class"			},
 		{ 12,	&teststack,				"Test stack"					},
+		{ 13,	&testexceptionals,		"Test exceptions"				},
 	};
 	while (true)
 	{
@@ -216,12 +238,13 @@ int main()
 		SetConsoleTextAttribute(hConsoleHandle, 10 | 0);
 		for each (Interface i in items)
 			cout << i.id << ". " << i.comment << "\n";
-		SetConsoleTextAttribute(hConsoleHandle, 12 | 0);
+		SetConsoleTextAttribute(hConsoleHandle, 6 | 0);
 		cout << "Choose menu item: ";
 		cin >> choice;
-		SetConsoleTextAttribute(hConsoleHandle, 9 | 0);
 		if (choice < 1 || choice > sizeof(items) / sizeof(Interface))
 			return 0;
+		system("cls");
+		SetConsoleTextAttribute(hConsoleHandle, 10 | 0);
 		items[choice - 1].invoke();
 		_getch();
 		system("cls");

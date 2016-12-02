@@ -8,7 +8,8 @@ BinNumber::BinNumber(int maxlength, char* strarr)
 			break;
 		if (strarr[i] != '0' && strarr[i] != '1')
 		{
-			std::cout << "Incorrect binary number.";
+			//std::cout << "Incorrect binary number.";
+			throw "Incorrect binary number";
 			return;
 		}
 	}
