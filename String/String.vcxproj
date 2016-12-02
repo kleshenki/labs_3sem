@@ -116,6 +116,7 @@
   <ItemGroup>
     <ClInclude Include="BinNumber.h" />
     <ClInclude Include="BlogEntry.h" />
+    <ClInclude Include="Exception.h" />
     <ClInclude Include="Interface.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="String.h" />

@@ -6,6 +6,7 @@
 #include "BlogEntry.h"
 #include "Interface.h"
 #include "Stack.h"
+#include "Exception.h"
 
 using namespace std;
 
@@ -145,16 +146,16 @@ void testbinaryfile()
 //функции демонстрации наследуемых классов
 void testbinnumberclass()
 {
-	String* bn = new BinNumber(5, "0101");
+	String* bn = new BinNumber(5, "1101");
 	bn->Print();
 	try
 	{
-		String* incorrectbn = new BinNumber(5, "0123");
+		String* incorrectbn = new BinNumber(5, "1123");
 		incorrectbn->Print();
 	}
-	catch (char* ex)
+	catch (IncorrectBinaryNumberException* ex)
 	{
-		cout << ex;
+		cout << ex->message;
 	}
 }
 
@@ -203,12 +204,33 @@ void testexceptionals()
 	BinNumber* bn;
 	try
 	{
-		cout << "Trying to create a binary number object that contains 0123 number: \n";
-		bn = new BinNumber(5, "0123");
+		cout << "Trying to create a binary number object that contains 123 number: \n";
+		bn = new BinNumber(4, "123");
 	}
-	catch (char* exception)
+	catch (IncorrectBinaryNumberException* ex)
 	{
-		cout << exception;
+		cout << ex->message << "\n\n";
+	}
+
+	try
+	{
+		cout << "Trying binary number with incorrect length: \n";
+		char* bin = "100\n";
+		bn = new BinNumber(5, bin);
+	}
+	catch (IncorrectBinaryLengthException* ex)
+	{
+		cout << ex->message << "\n\n";
+	}
+
+	try
+	{
+		cout << "Trying binary number with zero at start:\n";
+		bn = new BinNumber(4, "010");
+	}
+	catch (IncorrectBinaryStartException* ex)
+	{
+		cout << ex->message;
 	}
 }
 

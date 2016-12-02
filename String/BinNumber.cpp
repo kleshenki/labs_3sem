@@ -1,15 +1,26 @@
 #include "BinNumber.h"
+#include "Exception.h"
 
 BinNumber::BinNumber(int maxlength, char* strarr)
 {
+	if (strarr[0] == '0')
+	{
+		throw new IncorrectBinaryStartException("Incorrect binary start.");
+		return;
+	}
 	for (int i = 0; i < maxlength - 1; i++)
 	{
+		if (strarr[i] == '\n' && i != maxlength - 1)
+		{
+			throw new IncorrectBinaryLengthException("Incorrect binary length.");
+			return;
+		}
 		if (strarr[i] == '\n')
 			break;
 		if (strarr[i] != '0' && strarr[i] != '1')
 		{
 			//std::cout << "Incorrect binary number.";
-			throw "Incorrect binary number";
+			throw new IncorrectBinaryNumberException("Incorrect binary number.");
 			return;
 		}
 	}
