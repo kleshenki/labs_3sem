@@ -7,6 +7,7 @@
 #include "Interface.h"
 #include "Stack.h"
 #include "Exception.h"
+#include "TemplateStack.h"
 
 using namespace std;
 
@@ -199,6 +200,7 @@ void teststack()
 	stack.show();
 }
 
+//Демонстрация исключительных ситуаций
 void testexceptionals()
 {
 	BinNumber* bn;
@@ -234,6 +236,26 @@ void testexceptionals()
 	}
 }
 
+//Демонстрация шаблонных классов
+void testtemplatestack()
+{
+	cout << "Demonstrating TemplateStack<String>:\n";
+	String* str = new String(12, "Test string");
+	BinNumber* bn = new BinNumber(4, "101");
+	TemplateStack<String>* st = new TemplateStack<String>();
+	st->push(str);
+	st->push(bn);
+	st->show();
+
+	cout << "\n\nDemonstrating TemplateStack<int>:\n";
+	TemplateStack<int>* intst = new TemplateStack<int>();
+	int* number = new int(4);
+	intst->push(number);
+	number = new int(10);
+	intst->push(number);
+	intst->show();
+}
+
 int main()
 {
 	HANDLE hConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -253,6 +275,7 @@ int main()
 		{ 11,	&testblogentry,			"Test BlogEntry class"			},
 		{ 12,	&teststack,				"Test stack"					},
 		{ 13,	&testexceptionals,		"Test exceptions"				},
+		{ 14,	&testtemplatestack,		"Test template stack"			},
 	};
 	while (true)
 	{
