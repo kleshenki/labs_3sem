@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <conio.h>
 #include <Windows.h>
+
 #include "String.h"
 #include "BinNumber.h"
 #include "BlogEntry.h"
@@ -8,6 +9,10 @@
 #include "Stack.h"
 #include "Exception.h"
 #include "TemplateStack.h"
+
+#include <deque>
+#include <map>
+#include <algorithm>
 
 using namespace std;
 
@@ -256,6 +261,75 @@ void testtemplatestack()
 	intst->show();
 }
 
+//STL
+void testdeque()
+{
+	const int element_count = 10000;
+	deque<int> testdeque(0);
+	clock_t start, end;
+
+	//добавление
+	cout << "Testing deque operations with " << element_count << " random elements:\n";
+	start = clock();
+	for (int i = 0; i < element_count; i++)
+		testdeque.insert(testdeque.end(), rand());
+	end = clock();
+	cout << "Addition: " << (end-start) / (CLOCKS_PER_SEC / 1000) << "ms\n";
+
+	//поиск
+	int element = testdeque[element_count-1];
+	start = clock();
+	for (deque<int>::iterator it = testdeque.begin(); it != testdeque.end(); it++)
+		if (*it == element)
+			break;
+	end = clock();
+	cout << "Search: " << (end - start) / (CLOCKS_PER_SEC / 1000) << "ms\n";
+
+	//сортировка
+	start = clock();
+	sort(testdeque.begin(), testdeque.end());
+	end = clock();
+	cout << "Sort: " << (end - start) / (CLOCKS_PER_SEC / 1000) << "ms\n";
+
+	//удаление
+	start = clock();
+	for (deque<int>::iterator it = testdeque.begin(); it != testdeque.end(); it++)
+		it = testdeque.erase(it);
+	end = clock();
+	cout << "Remove: " << (end - start) / (CLOCKS_PER_SEC / 1000) << "ms\n";
+}
+
+void testmultimap()
+{
+	const int element_count = 10000;
+	multimap<int, int> testmm;
+	clock_t start, end;
+
+	//добавление
+	cout << "Testing multimap operations with " << element_count << " random elements:\n";
+	start = clock();
+	for (int i = 0; i < element_count; i++)
+		testmm.insert(pair<int, int>(rand(), rand()));
+	end = clock();
+	cout << "Addition: " << (end - start) / (CLOCKS_PER_SEC / 1000) << "ms\n";
+
+	//поиск
+	int element = rand();
+	start = clock();
+	for (multimap<int,int>::iterator it = testmm.begin(); it != testmm.end(); it++)
+		if (it->first == element)
+			break;
+	end = clock();
+	cout << "Search: " << (end - start) / (CLOCKS_PER_SEC / 1000) << "ms\n";
+
+	//удаление
+	start = clock();
+	for (multimap<int,int>::iterator it = testmm.begin(); it != testmm.end(); it++)
+		it = testmm.erase(it);
+	end = clock();
+	cout << "Remove: " << (end - start) / (CLOCKS_PER_SEC / 1000) << "ms\n";
+}
+
 int main()
 {
 	HANDLE hConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -276,6 +350,8 @@ int main()
 		{ 12,	&teststack,				"Test stack"					},
 		{ 13,	&testexceptionals,		"Test exceptions"				},
 		{ 14,	&testtemplatestack,		"Test template stack"			},
+		{ 15,	&testdeque,				"Test STL deque"				},
+		{ 16,	&testmultimap,			"Test STL multimap"				},
 	};
 	while (true)
 	{
