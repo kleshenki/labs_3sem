@@ -3,3 +3,10 @@
 ################################################################################
 
 /Debug
+/String/.vs/String/v16
+/String/Debug
+/UnitTest/Debug
+/String/String.vcxproj.user
+/UnitTest/UnitTest.vcxproj.filters
+/UnitTest/UnitTest.vcxproj.user
+/.vs
