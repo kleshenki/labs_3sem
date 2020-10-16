@@ -9,7 +9,6 @@ namespace UnitTest
 {
 	TEST_CLASS(UnitTest)
 	{
-		friend class String;
 	public:
 		TEST_METHOD(StringLength)
 		{
@@ -23,7 +22,6 @@ namespace UnitTest
 			char* append = " appended";
 			*str + append;
 			Assert::AreEqual("024Starting string appended", str->arr);
-
 		}
 
 		TEST_METHOD(ResizeStringLength)
