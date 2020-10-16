@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "CppUnitTest.h"
+#include ".\CppUnitTest.h"
 #define protected public
 #include "..\String\String.h"
 
