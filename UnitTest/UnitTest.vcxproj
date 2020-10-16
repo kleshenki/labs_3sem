@@ -177,6 +177,11 @@
   <ItemGroup>
     <Library Include=".\Microsoft.VisualStudio.TestTools.CppUnitTestFramework.lib" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\String\String.vcxproj">
+      <Project>{86cbca16-3396-41cb-852e-23805b332daa}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
