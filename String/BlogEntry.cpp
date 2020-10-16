@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "BlogEntry.h"
 
 BlogEntry::BlogEntry(int maxlength, char* entry)
