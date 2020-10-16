@@ -168,6 +168,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CppUnitTest.h" />
+    <ClInclude Include="CppUnitTestAssert.h" />
+    <ClInclude Include="CppUnitTestCommon.h" />
+    <ClInclude Include="CppUnitTestException.h" />
+    <ClInclude Include="CppUnitTestLogger.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
